@@ -1,7 +1,12 @@
-import 'dotenv/config'
+/* istanbul ignore file */
+import dotenv from 'dotenv';
 import { drizzle } from 'drizzle-orm/libsql'
 import { createClient } from '@libsql/client'
 import * as schema from './schema'
+
+dotenv.config({
+  path: ['.env.local', '.env.secret', '.env'],
+});
 
 const client = createClient({
   url: process.env.TURSO_CONNECTION_URL!,
